@@ -9,7 +9,8 @@ const { Title, Paragraph } = Typography;
 const CollectionPage = ({ collection }) => {
   const router = useRouter();
   const { slug } = router.query;
-  console.log(collection);
+  // console.log(collection);
+
   return (
     <div>
       <Title>{collection.title}</Title>
@@ -36,6 +37,7 @@ const CollectionPage = ({ collection }) => {
 export async function getServerSideProps(context) {
   const { slug } = context.params;
   const collection = await client.collection.fetchByHandle(slug);
+  // const product = await client.product.fetchByHandle(slug);
   return {
     props: {
       collection: JSON.parse(JSON.stringify(collection)),
